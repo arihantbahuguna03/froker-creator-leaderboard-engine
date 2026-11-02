@@ -1,6 +1,6 @@
 # Froker Creator Leaderboard Engine
 
-Hourly Airflow job that scores all active Froker creators using a quality-weighted engagement model and posts a Slack digest with Claude-generated rank change analysis.
+Hourly Airflow job that scores all active creators on the platform using a quality-weighted engagement model and posts a Slack digest with Claude-generated rank change analysis.
 
 > Built Aug 2024 – Aug 2025 using Claude 3.5 Sonnet API directly — before MCP and modern agentic tooling existed in production-ready form. All orchestration is raw Airflow + Python.
 
@@ -8,7 +8,7 @@ Hourly Airflow job that scores all active Froker creators using a quality-weight
 
 ## Problem
 
-Froker rewards its top creators weekly with prize money (Rank 1 → ₹1,000, Rank 2 → ₹500, Rank 3 → ₹250). The original ranking was based on raw like + comment counts — which meant creators who bought fake engagement consistently ranked above genuine creators with real reach and saves.
+The platform rewards its top creators weekly with prize money (Rank 1 → ₹1,000, Rank 2 → ₹500, Rank 3 → ₹250). The original ranking was based on raw like + comment counts — which meant creators who bought fake engagement consistently ranked above genuine creators with real reach and saves.
 
 **Result:** The leaderboard lost trust. Good creators stopped participating. Payout money went to inflated accounts.
 
@@ -60,7 +60,7 @@ Airflow (hourly)
 ## Sample Slack Output
 
 ```
-Froker Weekly Leaderboard — Nov 03, 2024
+Creator Leaderboard — Nov 03, 2024
 
 #1 Creator Gamma  ↑1  (score: 1.8234)  🏆 ₹1,000
 #2 Creator Alpha  ↑1  (score: 1.4102)  🏆 ₹500
