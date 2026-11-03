@@ -1,5 +1,5 @@
 """
-Froker Creator Leaderboard Engine
+Creator Leaderboard Engine
 ==================================
 Scores creators weekly using a weighted engagement model that values
 quality signals (shares, saves) over vanity metrics (likes, comments).
@@ -87,7 +87,7 @@ def explain_leaderboard(leaderboard: list[dict]) -> str:
         for e in leaderboard
     )
 
-    prompt = f"""You are an analyst for a creator rewards app called Froker.
+    prompt = f"""You are an analyst for a creator rewards platform.
 Below is this week's creator leaderboard with rank changes.
 
 Leaderboard:
@@ -118,7 +118,7 @@ def allocate_prizes(leaderboard: list[dict]) -> list[dict]:
 # ── Slack ─────────────────────────────────────────────────────────────────────
 
 def post_to_slack(leaderboard: list[dict], explanation: str) -> None:
-    lines = [f"*Froker Weekly Leaderboard — {datetime.now().strftime('%b %d, %Y')}*\n"]
+    lines = [f"*Weekly Creator Leaderboard — {datetime.now().strftime('%b %d, %Y')}*\n"]
 
     for e in leaderboard[:5]:
         arrow = "↑" if e["rank_change"] > 0 else ("↓" if e["rank_change"] < 0 else "→")

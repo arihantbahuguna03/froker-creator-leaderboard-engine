@@ -1,4 +1,4 @@
-# Froker Creator Leaderboard Engine
+# Creator Leaderboard Engine
 
 Hourly Airflow job that scores all active creators on the platform using a quality-weighted engagement model and posts a Slack digest with Claude-generated rank change analysis.
 
