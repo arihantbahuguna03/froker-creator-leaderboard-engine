@@ -25,16 +25,31 @@ from datetime import datetime
 import anthropic
 import requests
 
-from demo_data import DEMO_CREATORS, PRIZE_POOL, SLACK_WEBHOOK_URL
+from demo_data import DEMO_CREATORS, SLACK_WEBHOOK_URL
 
-# Engagement weight config
-WEIGHTS = {
-    "shares":   3.0,
-    "saves":    3.0,
-    "reach":    1.0,
-    "likes":    0.5,
-    "comments": 0.5,
-}
+
+def _load_scoring_config() -> tuple[dict, dict]:
+    """
+    Load engagement quality weights and prize pool from scoring_config.py.
+
+    WEIGHTS penalise bought interactions (likes, comments) and reward genuine
+    intent signals (shares, saves) — calibrated against historical engagement
+    data. PRIZE_POOL maps leaderboard rank to ₹ payout.
+
+    Implementation: proprietary — available on request.
+    Copy scoring_config.example.py → scoring_config.py to run with your own values.
+    """
+    try:
+        import scoring_config
+        return scoring_config.WEIGHTS, scoring_config.PRIZE_POOL
+    except ImportError:
+        raise RuntimeError(
+            "scoring_config.py not found. "
+            "Copy scoring_config.example.py → scoring_config.py and fill in your values."
+        )
+
+
+WEIGHTS, PRIZE_POOL = _load_scoring_config()
 
 
 # ── Scoring ──────────────────────────────────────────────────────────────────
